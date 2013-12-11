@@ -1,19 +1,23 @@
 import pdb 
 
 class library(list): 
-	def __init__(self):
-		pass 
-		#library[0] = shelf
+	def __init__(self, shelves):
+		# super(library, self).__init__([shelf()])
+		for x in range(shelves):
+			list.append(self, shelf())
 
 	def num_shelves(self): 
 		return len(self)
 
 class shelf(list): 
 	def __init__(self):
-		pass
+		super(shelf, self).__init__([])
 
-	def list_books(shelf):
-		for book in shelf: 
+
+	def list_books(self):
+		# if not self:
+		# 	print "Shelf is empty" 
+		for book in self: 
 			print book.name
 
 class book():
@@ -29,7 +33,7 @@ class book():
 		#if they dont give a shelf, prompt them for a shelf
 
 		#if library contains shelf:
-		if False:
+		if library.count(shelf) == 1:
 			#put this in a method?
 			library[shelf].append(book_name) 
 		else:
