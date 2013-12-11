@@ -1,5 +1,10 @@
 import pdb 
 
+def main():
+	global my_library
+	my_library = library(3)
+
+
 class library(list): 
 	def __init__(self, shelves):
 		# super(library, self).__init__([shelf()])
@@ -20,9 +25,12 @@ class shelf(list):
 		for book in self: 
 			print book.name
 
+
+
+
 class book():
-	name = ""
-	#current_shelf = None
+
+	current_shelf = None
 
 	def __init__(self, book_name, shelf):
 		name = book_name
@@ -32,15 +40,19 @@ class book():
 	def enshelf(self, book_name, shelf):
 		#if they dont give a shelf, prompt them for a shelf
 
-		#if library contains shelf:
-		if library.count(shelf) == 1:
-			#put this in a method?
-			library[shelf].append(book_name) 
-		else:
-			#shelf 
-			library[shelf].append(book_name)
-		current_shelf = shelf; 
-		print book_name + " is currently on shelf " + current_shelf
+		pdb.set_trace();
 
+		num_shelves = my_library.num_shelves()
+
+		#if library contains shelf:
+		if num_shelves > (shelf):
+			my_library[shelf].append(book_name)
+			current_shelf = shelf;
+			print book_name + ' is currently on shelf ' + str(current_shelf) + '.' 
+		else:
+			print 'The library only has ' + str(num_shelves) + ' shelves.'
+		 
+		
+main()
 
 pdb.set_trace();
