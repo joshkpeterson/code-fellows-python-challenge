@@ -2,12 +2,13 @@ import pdb
 
 def main():
 	global my_library
-	my_library = library(3)
-
+	print 'Welcome to the virtual Library-o-matic.'
+	shelves = input('How man shelves would you like: ')
+	my_library = library(shelves)
+	print 'Ok, here\'s a library with ' + str(shelves) + ' shelves.'
 
 class library(list): 
 	def __init__(self, shelves):
-		# super(library, self).__init__([shelf()])
 		for x in range(shelves):
 			list.append(self, shelf())
 
@@ -25,33 +26,24 @@ class shelf(list):
 		for book in self: 
 			print book.name
 
-
-
-
 class book():
-
 	current_shelf = None
 
 	def __init__(self, book_name, shelf):
 		name = book_name
-		pdb.set_trace();
+		num_shelves = my_library.num_shelves()
+		while ( shelf > (num_shelves - 1) ):
+			print 'The library only has ' + str(num_shelves) + ' shelves.'
+			shelf = input('Pick a different shelf: ')
 		self.enshelf(name, shelf)
+			
+
 
 	def enshelf(self, book_name, shelf):
-		#if they dont give a shelf, prompt them for a shelf
-
-		pdb.set_trace();
-
-		num_shelves = my_library.num_shelves()
-
-		#if library contains shelf:
-		if num_shelves > (shelf):
-			my_library[shelf].append(book_name)
-			current_shelf = shelf;
-			print book_name + ' is currently on shelf ' + str(current_shelf) + '.' 
-		else:
-			print 'The library only has ' + str(num_shelves) + ' shelves.'
-		 
+		my_library[shelf].append(book_name)
+		current_shelf = shelf;
+		print book_name + ' is currently on shelf ' + str(current_shelf) + '.' 
+		
 		
 main()
 
